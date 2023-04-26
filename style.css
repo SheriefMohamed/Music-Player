@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --gray1: #F1F2F6;
+  --gray2: #DCDFEA;
+  --blue-lack: #0C081E;
+  --blue-lack2: #39383f;
+  --orange: #FF4C29;
+  --white: #ffff;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray2);
+}
+.container {
+  background-color: var(--gray1);
+  color: var(--blue-lack);
+  padding: 2.5rem;
+  width: 60%;
+  height: 35rem;
+  border-radius: .4em;
+  margin-top: 3rem;
+  box-shadow: 0px 0px 15px rgb(212, 212, 212);
+}
+.container .topBar p{
+  color: var(--orange);
+}
+
+.songs{
+  margin: 1rem 0rem;
+  font-size: 18px;
+  max-height: 25.5rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.songs::-webkit-scrollbar {
+  width: 10px; /* set the width of the scrollbar */
+  margin: 0px .5rem;
+}
+
+.songs::-webkit-scrollbar-track {
+  background-color: var(--gray1); /* set the color of the track */
+}
+
+.songs::-webkit-scrollbar-thumb {
+  background-color: var(--blue-lack); /* set the color of the thumb */
+  border-radius: 5px; /* round the corners of the thumb */
+  border: 2px solid var(--gray1);
+}
+
+.songs .song{
+  padding: 1rem;
+  cursor: pointer;
+}
+.songs .song .mark{
+  padding: 0rem 2rem 0rem 1rem;
+}
+.songs .song .mark span{
+  margin: 0px 0px 0px -.4rem;
+  padding: .2rem 0px 0px 0px;
+  cursor: pointer;
+}
+.songs .time{
+  float: right;
+}
+.songs .time span{
+  font-size: 40px;
+}
+.songs .playing{
+  background-color: var(--blue-lack);
+  color: var(--gray2);
+  border-radius: .6em;
+}
+
+.foot {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--gray1);
+  padding: 20px;
+  height: 6rem;
+}
+.foot img {
+  width: 3.5rem;
+}
+.foot .content-bar {
+  margin: 0px 15px;
+  width: 10%;
+}
+.foot .content-bar .name {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--blue-black);
+}
+.foot .content-bar p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.middle-bar{
+    width: 100%;
+}
+
+.progress-area {
+  align-items: center;
+  height: 6px;
+  width: 100%;
+  border-radius: 50px;
+  background: var(--white);
+  cursor: pointer;
+}
+.progress-area .progress-bar {
+  height: inherit;
+  width: 0%;
+  position: relative;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue-lack) 0%, var(--orange) 75%);
+}
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  top: 50%;
+  right: -5px;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background: var(--orange);
+  transition: opacity 0.2s ease;
+}
+.progress-area:hover .progress-bar::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+.progress-area .song-timer {
+  margin-top: 2px;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.song-timer span {
+  font-size: 13px;
+  color: var(--lightblack);
+}
+
+.control{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.control span{
+    font-size: 30px;
+    cursor: pointer;
+    margin: .2rem .5rem;
+}
+.control .first{
+    margin-right: auto;
+}
+.control .last{
+    margin-left: auto;
+}
+.control .active{
+    color: var(--orange);
+}
+
+.sound {
+  display: flex;
+  flex-direction: column;
+  width: 16%;
+  align-items: center;
+  justify-content: space-between;
+}
+.sound span {
+  font-weight: bold;
+  color: var(--blue-lack);
+  margin: 0.5rem;
+  cursor: pointer;
+}
+#volumeControl {
+  -webkit-appearance: none;
+  visibility: hidden;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background-color: var(--gray2);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--blue-lack);
+  cursor: pointer;
+}
+
+#volumeControl::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--blue-lack);
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .container{
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  .container{
+    width: 100%;
+    padding: 1rem;
+  }
+  .foot {
+    padding: 10px;
+    height: 4rem;
+  }
+  .foot img {
+    width: 2.5rem;
+  } 
+  .control span{
+      font-size: 18px;
+  }
+}
